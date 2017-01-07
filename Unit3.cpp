@@ -57,17 +57,26 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
 {
         int sit_mins, stand_mins, delay_mins;
+
         if (Edit1->Text == "") {
                 sit_mins = Form1->default_sit_time;
                 Edit1->Text = SecsToMinutes(Form1->default_sit_time);
+        } else {
+                sit_mins = StrToInt(Edit1->Text);
         }
+
         if (Edit2->Text == "") {
                 stand_mins = StrToInt(Edit2->Text);
                 Edit2->Text = SecsToMinutes(Form1->default_stand_time);
+        } else {
+                stand_mins = StrToInt(Edit2->Text);
         }
+
         if (Edit3->Text == "") {
                 delay_mins = StrToInt(Edit3->Text);
                 Edit3->Text = SecsToMinutes(Form1->s_delay);
+        } else {
+                delay_mins = StrToInt(Edit3->Text);
         }
 
         Form1->default_sit_time = MinutesToSecs(sit_mins);

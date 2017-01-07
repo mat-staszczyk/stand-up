@@ -29,24 +29,6 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm3::Button1Click(TObject *Sender)
-{
-        int sit_mins = StrToInt(Edit1->Text);
-        int stand_mins = StrToInt(Edit2->Text);
-        int delay_mins = StrToInt(Edit3->Text);
-        Form1->default_sit_time = MinutesToSecs(sit_mins);
-        Form1->default_stand_time = MinutesToSecs(stand_mins);
-        Form1->s_delay = MinutesToSecs(delay_mins);
-        if (CheckBox1->Checked) {
-                Form1->sounds = true;
-        } else {
-                Form1->sounds = false;
-        }
-        Form3->Close();
-}
-//---------------------------------------------------------------------------
-
-
 
 
 
@@ -74,9 +56,20 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 
 void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
 {
-        int sit_mins = StrToInt(Edit1->Text);
-        int stand_mins = StrToInt(Edit2->Text);
-        int delay_mins = StrToInt(Edit3->Text);
+        int sit_mins, stand_mins, delay_mins;
+        if (Edit1->Text == "") {
+                sit_mins = Form1->default_sit_time;
+                Edit1->Text = SecsToMinutes(Form1->default_sit_time);
+        }
+        if (Edit2->Text == "") {
+                stand_mins = StrToInt(Edit2->Text);
+                Edit2->Text = SecsToMinutes(Form1->default_stand_time);
+        }
+        if (Edit3->Text == "") {
+                delay_mins = StrToInt(Edit3->Text);
+                Edit3->Text = SecsToMinutes(Form1->s_delay);
+        }
+
         Form1->default_sit_time = MinutesToSecs(sit_mins);
         Form1->default_stand_time = MinutesToSecs(stand_mins);
         Form1->s_delay = MinutesToSecs(delay_mins);

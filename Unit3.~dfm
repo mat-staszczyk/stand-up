@@ -105,7 +105,7 @@ object Form3: TForm3
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     OnClick = SpeedButton1Click
   end

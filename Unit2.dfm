@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 516
-  Top = 128
+  Left = 518
+  Top = 130
   BorderStyle = bsToolWindow
   Caption = 'Stand up!'
   ClientHeight = 167

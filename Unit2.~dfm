@@ -40,14 +40,14 @@ object Form2: TForm2
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     OnClick = SpeedButton1Click
   end
   object SpeedButton2: TSpeedButton
-    Left = 160
+    Left = 152
     Top = 112
-    Width = 89
+    Width = 97
     Height = 33
     Caption = 'Ask me later'
     Flat = True
@@ -55,7 +55,7 @@ object Form2: TForm2
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     OnClick = SpeedButton2Click
   end
