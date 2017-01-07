@@ -3,8 +3,9 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "Unit3.h"
 #include "Unit1.h"
+#include "Unit3.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -28,17 +29,6 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm3::Button1Click(TObject *Sender)
-{
-        int mins1 = StrToInt(Edit1->Text);
-        int mins2 = StrToInt(Edit2->Text);
-        Form1->default_sit_time = MinutesToSecs(mins1);
-        Form1->default_stand_time = MinutesToSecs(mins2);
-        Form3->Close();
-}
-//---------------------------------------------------------------------------
-
-
 
 
 
@@ -46,8 +36,49 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 {
         Edit1->Text = SecsToMinutes(Form1->default_sit_time);
         Edit2->Text = SecsToMinutes(Form1->default_stand_time);
+        Edit3->Text = SecsToMinutes(Form1->s_delay);
+        // Lock edit fields for values other than numeric
+        // source: bcbjournal.org/forums/viewtopic.php?f=10&t=1113
+        SetWindowLong(Edit1->Handle, GWL_STYLE, GetWindowLong(Edit1->Handle, GWL_STYLE) | ES_NUMBER);
+        SetWindowLong(Edit2->Handle, GWL_STYLE, GetWindowLong(Edit2->Handle, GWL_STYLE) | ES_NUMBER);
+        SetWindowLong(Edit3->Handle, GWL_STYLE, GetWindowLong(Edit3->Handle, GWL_STYLE) | ES_NUMBER);
+        if (Form1->sounds) {
+                CheckBox1->Checked = true;
+        } else {
+                CheckBox1->Checked = false;
+        }
 }
 //---------------------------------------------------------------------------
 
 
+
+
+
+void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
+{
+        int sit_mins, stand_mins, delay_mins;
+        if (Edit1->Text == "") {
+                sit_mins = Form1->default_sit_time;
+                Edit1->Text = SecsToMinutes(Form1->default_sit_time);
+        }
+        if (Edit2->Text == "") {
+                stand_mins = StrToInt(Edit2->Text);
+                Edit2->Text = SecsToMinutes(Form1->default_stand_time);
+        }
+        if (Edit3->Text == "") {
+                delay_mins = StrToInt(Edit3->Text);
+                Edit3->Text = SecsToMinutes(Form1->s_delay);
+        }
+
+        Form1->default_sit_time = MinutesToSecs(sit_mins);
+        Form1->default_stand_time = MinutesToSecs(stand_mins);
+        Form1->s_delay = MinutesToSecs(delay_mins);
+        if (CheckBox1->Checked) {
+                Form1->sounds = true;
+        } else {
+                Form1->sounds = false;
+        }
+        Form3->Close();
+}
+//---------------------------------------------------------------------------
 
