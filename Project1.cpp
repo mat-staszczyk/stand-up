@@ -13,6 +13,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         try
         {
                  Application->Initialize();
+                 Application->Title = "Stand up!";
                  Application->CreateForm(__classid(TForm1), &Form1);
                  Application->CreateForm(__classid(TForm3), &Form3);
                  Application->CreateForm(__classid(TForm2), &Form2);
