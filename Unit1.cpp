@@ -51,9 +51,10 @@ AnsiString SecondsToReadableTime(int secs, bool full_time = true)
 
         hh = IntToTimeString(hours);
         mm = IntToTimeString(minutes);
-        ss = IntToTimeString(seconds);
+
 
         if (full_time) {
+                ss = IntToTimeString(seconds);
                 return hh+":"+mm+":"+ss;
         } else {
                 return hh+":"+mm;

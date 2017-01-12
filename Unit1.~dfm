@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 796
-  Top = 120
+  Left = 799
+  Top = 121
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Stand up!'
@@ -71,8 +71,8 @@ object Form1: TForm1
   object Label2: TLabel
     Left = 21
     Top = 16
-    Width = 104
-    Height = 46
+    Width = 105
+    Height = 48
     Caption = 'Stand'
     Color = clBtnHighlight
     Font.Charset = DEFAULT_CHARSET

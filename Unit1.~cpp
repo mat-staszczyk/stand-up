@@ -98,23 +98,23 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-        Label1->Caption = SecondsToReadableTime(s_timer);
-        Label7->Caption = SecondsToReadableTime(s_total, false);
-        Label8->Caption = SecondsToReadableTime(s_total_stand, false);
-        Label9->Caption = SecondsToReadableTime(s_total_sit, false);
+        Label1->Caption = SecondsToReadableTime(this->s_timer);
+        Label7->Caption = SecondsToReadableTime(this->s_total, false);
+        Label8->Caption = SecondsToReadableTime(this->s_total_stand, false);
+        Label9->Caption = SecondsToReadableTime(this->s_total_sit, false);
 
-        if (s_timer<=0)
+        if (this->s_timer<=0)
         {
                 Timer1->Enabled = false;
                 Form2->ShowModal();
         }
 
-        s_timer--;
-        s_total++;
+        (this->s_timer)--;
+        (this->s_total)++;
         if (standing) {
-                s_total_stand++;
+                (this->s_total_stand)++;
         } else {
-                s_total_sit++;
+                (this->s_total_sit)++;
         }
 }
 //---------------------------------------------------------------------------
